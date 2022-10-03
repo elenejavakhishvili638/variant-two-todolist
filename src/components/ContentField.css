@@ -1,0 +1,36 @@
+.content {
+  display: flex;
+  width: 100%;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contentfield {
+  width: 50%;
+}
+
+.div,
+.delete {
+  width: 8rem;
+  height: 2rem;
+  background-color: antiquewhite;
+  text-align: center;
+  margin-right: 2px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.delete {
+  border: none;
+  background-color: rgb(155, 234, 234);
+  /* border-radius: 0 8px 8px 0 0; */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
+.div p {
+  margin: 0px;
+}

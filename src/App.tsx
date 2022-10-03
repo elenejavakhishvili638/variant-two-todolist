@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import { ContentField } from './components/ContentField';
+import InputField from './components/InputField';
+import {Tasks} from "./components/interfaces/taskInterface"
 
-function App() {
+
+const App: React.FC = () => {
+
+  const [task, setTask] = useState<string>("")
+  const [days, setDays] = useState<string>("0")
+  const [tasks, setTasks] = useState<Tasks[]>([])
+
+
+  const handleSubmit = (event: React.FormEvent<EventTarget>) => {
+    event.preventDefault()
+    setTasks([...tasks, {id: Date.now(), task: task, days: days}])
+    setTask("")
+    setDays("0")
+  }
+
+  // console.log(tasks)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main'>
+      <div className='inputfield' >
+      <InputField 
+       task={task}
+       setTask={setTask}
+       days={days}
+       setDays={setDays}
+       handleSubmit={handleSubmit}
+      />
+      </div>
+      <div className='contentfield'>
+      <ContentField 
+        tasks={tasks}
+        setTasks={setTasks}
+      />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
